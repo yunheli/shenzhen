@@ -79,12 +79,12 @@ command :'distribute:fir' do |c|
   c.summary = "请使用新版api_token => http://fir.im/user/info 获取 \n Distribute an .ipa file over fir.im"
   c.description = ""
   c.option '-f', '--file FILE', ".ipa file for the build"
-  c.option '-u', '--user_token TOKEN', "User Token. Available at http://fir.im/user/info"
+  c.option '-u', '--user_token 即fir.im 的 api_token ', "fir.im 的 api_token 在 http://fir.im/user/info 获取"
   c.option '-a', '--app_id APPID', "App Id (iOS Bundle identifier)"
   c.option '-n', '--notes NOTES', "Release notes for the build"
   c.option '-N', '--app_name APP_NAME', "the name for app"
   c.option '-R', '--release_type RELEASE_TYPE', "release_type for app default adhoc"
-  c.option '-V', '--app_version VERSION', "App Version"
+  c.option '-V', '--app_version VERSION', "应用编译号 build"
   c.option '-S', '--short_version SHORT', "App Short Version"
 
   c.action do |args, options|
@@ -114,9 +114,9 @@ command :'distribute:fir' do |c|
         upload_app_options[:name] = options.app_name || ENV['APP_NAME']
       end
       upload_app_options[:release_type] = options.release_type || "adhoc"
-      upload_app_options[:version] = options.short_version
-      upload_app_options[:build] = options.app_version
-      upload_app_options[:changelog] = options.notes
+      upload_app_options[:version] = @short_version
+      upload_app_options[:build] = @app_version
+      upload_app_options[:changelog] = @notes
 
       #upload file
       upload_response = client.upload_file_and_update_app_info(@file, upload_app_options)
