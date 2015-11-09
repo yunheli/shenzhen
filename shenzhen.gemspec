@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "shenzhen/version"
 
 Gem::Specification.new do |s|
-  s.name        = "shenzhen"
+  s.name        = "shenzhen_fir"
   s.authors     = ["Mattt Thompson"]
   s.email       = "m@mattt.me"
   s.license     = "MIT"
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.version     = Shenzhen::VERSION
   s.platform    = Gem::Platform::RUBY
   s.summary     = "Shenzhen"
-  s.description = "CLI for Building & Distributing iOS Apps (.ipa Files)"
+  s.description = "[fir.im 新版api] CLI for Building & Distributing iOS Apps (.ipa Files)"
 
   s.add_dependency "commander", "~> 4.3"
   s.add_dependency "highline", ">= 1.7.2"
